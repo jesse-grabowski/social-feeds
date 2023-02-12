@@ -23,3 +23,5 @@ books.addMethod('GET', new apigateway.HttpIntegration('http://amazon.com'), {
   authorizationType: apigateway.AuthorizationType.COGNITO,
 });
 ```
+
+Cognito bot prevention via https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-pre-sign-up.html

@@ -13,13 +13,13 @@ This document describes the application point of view of the Social Feeds applic
 
 ## Assumptions
 
-* Application will only be available for private use
+N/A
 
 ## General Context
 
 ### Objectives
 
-This application allows for static websites and applications to access social media feeds without requiring a custom backend to manage access tokens.
+This application will allow for static websites and applications to access social media feeds without requiring a custom backend to manage access tokens.
 
 ### Existing
 
@@ -107,13 +107,15 @@ C4Context
 
 ### Detailed Application Architecture
 
+Most experiences, unless specified otherwise, will happen via the SPA making synchronous HTTP requests to the API.
+
 ##### Administration
 
 Administrator will interact directly with AWS Cognito to provision/deprovision user accounts.
 
 ##### Site Management
 
-Site Manager will interact with the Application via a SPA. The SPA will provide the following experiences:
+Site management includes the following experiences:
 
 * billing overview
 * security overview
@@ -129,7 +131,7 @@ C4Container
   Person(sm, "Site Manager")
   
   Container_Boundary(sfc, "Social Feeds") {
-    Container(spa, "Single Page Application", "Typescript, React, TailwindCSS")
+    Container(spa, "Single Page Application", "Typescript, NextJS, TailwindCSS")
     Container(api, "API", "Typescript")
     
     ContainerDb(db, "Database", "DynamoDB")
@@ -144,37 +146,29 @@ C4Container
 
 The Billing Overview will allow the Site Manager to see a breakdown of the cost of each individual site, user, and social provider they have provisioned in their Organization.
 
-The SPA will query the API via synchronous HTTP requests for general organization stats and the pricing table for the organization, which will then be merged for display.
+The SPA will query the API for general organization stats and the pricing table for the organization, which will then be merged for display.
 
 ###### Security Overview
 
 The Security Overview will allow the Site Manager to see a breakdown of the individual users in their organization and allow them to assign specific roles and permissions to each one.
 
-The SPA will query the API via synchronous HTTP requests for organization users and their permissions. These may then be modified via additional synchronous HTTP requests.
+The SPA will query the API for organization users and their permissions. These may then be modified via additional synchronous HTTP requests.
 
 ###### Provision a New Site
 
 This experience will allow the Site Manager to provision a new site under their Organization.
 
-The SPA will interact with the API via synchronous HTTP requests.
-
 ###### Deprovision an Existing Site
 
 This experience will allow the Site Manager to remove a site from their Organization (and deprovision all underlying AWS resources).
-
-The SPA will interact with the API via synchronous HTTP requests.
 
 ###### Add Social Media Provider to Site
 
 This experience will allow the Site Manager to add a social media capability to one of their existing sites.
 
-The SPA will interact with the API via synchronous HTTP requests.
-
 ###### Remove Social Media Provider from Site
 
 This experience will allow the Site Manager to remove a social media capability from one of their existing sites.
-
-The SPA will interact with the API via synchronous HTTP requests.
 
 ##### Social Media Management
 
@@ -194,7 +188,7 @@ C4Container
   
   Container_Boundary(sfc, "Social Feeds") {
     Container(api, "API", "Typescript")
-    Container(spa, "Single Page Application", "Typescript, React, TailwindCSS")
+    Container(spa, "Single Page Application", "Typescript, NextJS, TailwindCSS")
     
     ContainerDb(vault, "Vault", "Secret Manager")
     Container(bg, "Background Processes", "Typescript")
@@ -214,7 +208,7 @@ C4Container
 
 This experience will allow a Social Media Manager to authorize Social Feeds to pull media from a Social Media Provider via the providers' individual authorization flows.
 
-The SPA will interact with the API via synchronous HTTP requests. The SPA will perform app authorization via one or more redirects, with part of this experience taking place on the providers' sites.
+The SPA will perform app authorization via one or more redirects, with part of this experience taking place on the providers' sites.
 
 ##### Feed Display
 
