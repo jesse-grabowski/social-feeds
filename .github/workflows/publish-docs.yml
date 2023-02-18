@@ -22,11 +22,17 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
-      - run: asciidoctor -D './docs/dist' './docs/**/*.adoc'
+      - name: Build artifact
+        run: |
+          asciidoctor -D './docs/dist' './docs/**/*.adoc'
+          tar --dereference --directory './docs/dist' -cvf "$RUNNER_TEMP/artifact.tar" .
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@main
         with:
-          path: ./docs/dist
+          name: 'github-pages'
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+
   deploy:
     environment:
       name: github-pages
