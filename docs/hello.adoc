@@ -1,0 +1,10 @@
+= Beans
+
+== Beans
+
+Beans
+
+[plantuml, format=svg]
+----
+component beans
+----
