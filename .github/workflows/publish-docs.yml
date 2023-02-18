@@ -24,7 +24,8 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Build artifact
         run: |
-          asciidoctor -r asciidoctor-diagram -D './docs/dist' './docs/**/*.adoc'
+          gem install asciidoctor-multipage
+          asciidoctor -r asciidoctor-diagram -r asciidoctor-multipage -b multipage_html5 -D './docs/dist' './docs/**/*.adoc'
           tar --dereference --directory './docs/dist' -cvf "$RUNNER_TEMP/artifact.tar" .
       - name: Upload artifact
         uses: actions/upload-artifact@main
