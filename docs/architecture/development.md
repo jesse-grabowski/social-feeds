@@ -62,7 +62,7 @@ Application should strive to confirm to WCAG 2.0 Level AA with the following exc
 
 * Fonts must be self-hosted to protect user privacy
 * A single font should be used for all components in the application
-* Font should be subset to include include characters required for the application
+* Font should be subset to include only characters required for the application
 
 #### Responsivity
 
@@ -208,7 +208,7 @@ N/A
 
 #### Timezones
 
-* All time data will be persisted in UTF-8. Data may be shifted into the user timezone client-side for display purposes
+* All time data will be persisted in UTC. Data may be shifted into the user timezone client-side for display purposes
 
 #### Log Management
 
