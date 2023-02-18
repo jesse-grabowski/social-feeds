@@ -1,4 +1,5 @@
 = Beans
+:toc:
 
 == Beans
 :desc: here there be beans
