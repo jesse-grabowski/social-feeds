@@ -8,3 +8,5 @@ Beans
 ----
 component beans
 ----
+
+More text
