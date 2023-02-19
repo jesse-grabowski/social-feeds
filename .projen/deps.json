@@ -25,6 +25,10 @@
       "type": "build"
     },
     {
+      "name": "concurrently",
+      "type": "build"
+    },
+    {
       "name": "esbuild",
       "type": "build"
     },
@@ -46,6 +50,10 @@
       "type": "build"
     },
     {
+      "name": "http-server",
+      "type": "build"
+    },
+    {
       "name": "jest",
       "type": "build"
     },
@@ -57,6 +65,10 @@
     {
       "name": "npm-check-updates",
       "version": "^16",
+      "type": "build"
+    },
+    {
+      "name": "onchange",
       "type": "build"
     },
     {

@@ -1,14 +1,23 @@
-= Beans
-:toc:
+:stylesheet: stylesheet.css
+:plantumlconfig: config.puml
+:nofooter:
+
+= Social Feeds
+:toc2:
 
 == Beans
-:desc: here there be beans
 
 Beans
 
-[plantuml, format=svg]
+[plantuml, .center, format=svg]
 ----
-component beans
+@startuml
+component whatever
+component other
+component test
+
+whatever --> other
+@enduml
 ----
 
-More text
+More text hello world 2

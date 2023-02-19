@@ -102,6 +102,14 @@
         }
       ]
     },
+    "docs": {
+      "name": "docs",
+      "steps": [
+        {
+          "exec": "concurrently -k \"onchange 'docs/**/*.adoc' -- asciidoctor -r asciidoctor-diagram -a theme=flask -D './docs/dist' './docs/index.adoc'\" \"http-server './docs/dist'\""
+        }
+      ]
+    },
     "eject": {
       "name": "eject",
       "description": "Remove projen from the project",
